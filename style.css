@@ -1,0 +1,149 @@
+/* root created for recurring colors */
+:root{
+  --snow:#e6e8e8;
+  --nature:green;
+  --dark:black;
+  --sky:lightskyblue;
+  --width:518px auto;
+  }
+  
+   /* created line height */
+  *{
+    line-height: 1.8;
+    background-color:var(--snow);
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+
+  .score{
+    display: none;
+    margin-top: -50%;
+    justify-content: left;
+  }
+
+header{
+  display: block;
+  align-content: center;
+  margin-left: 36%;
+  margin-top: 3%;
+  margin-bottom: 5%;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  }
+
+.right{
+  display: flex;
+  position: fixed;
+}
+
+h2{
+  
+  margin-top: -70%;
+}
+
+.timer{
+  display: flex;
+  position: fixed;
+  justify-content:right;
+  margin-left: 85%;
+  margin-top: -3%;
+  }
+
+
+
+h3{
+  display: flex;
+  margin-left: -10%;
+  margin-bottom: 2%;
+}
+
+.start{
+  display: block;
+  justify-content:center;
+  margin-left: 48%;
+}
+
+
+button{
+  display: block;
+  justify-content:center;
+  margin-left: -1.9%;
+  margin-top: 3%;
+  background-color:var(--nature);
+  border: none;
+  padding:15px 32px;
+  display: inline-block;
+  margin-bottom: 10%;
+  color:white;
+  font-weight: bold;
+  border-radius: 10px;
+  }
+
+.questionaire{
+  
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom:5%;
+  height:350px;
+  width: 500px auto;
+  border-radius: 10px;
+  display: none;
+   }
+
+
+.changequestion{
+  display: flex;
+  align-items: center;
+  border:30% solid black;
+  margin-bottom: 50px;
+  text-align: center;
+  
+ }
+
+
+.listofanswer{
+  box-shadow:inset 0px 0px 15px var(--snow), 0 0 45px var(--dark);
+  border-radius: 10px;
+  background-color: var(--nature);
+  text-align: center;
+  margin: 19px 600px 14px;
+}
+
+
+ .listofanswer:hover{
+  transform: scale(1);
+  box-shadow:inset 0px 0px 15px var(--snow), 0 0 45px var(--dark);
+  background: var(--sky);
+  font-size: large;
+  font-weight: bolder;
+ }
+ .listofanswer:active{
+  transform: scale(1.5);
+  box-shadow:inset 0px 0px 15px var(--snow), 0 0 45px var(--dark);
+  background: var(--sky);
+  font-size: large;
+  font-weight: bolder;
+ }
+ 
+ h2:hover + .score{
+  display: block;
+ }
+
+ button:hover{
+  transform:scale(1.6)
+ }
+
+ .hide,.correct,.wrong{
+  display:none;
+ }
+
+ .show{
+  display:block;
+ }
+
+p{
+justify-content: left;
+align-items: center;}
