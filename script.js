@@ -65,27 +65,23 @@ var a3 = document.getElementById("a3");
 var a4 = document.getElementById("a4");
 var box = document.getElementsByClassName("box");
 var select = document.getElementsByClassName("select");
-var timeLeft = 80;
+var timeLeft = 5;
 var index = 0;
 var gamend = document.getElementsByClassName("gamend");
 var box = document.getElementsByClassName("box");
-
+var scoreCountshow = document.getElementsByClassName("scoreCountshow");
+var scoreCount = 0;
 var score = 0;
 
-/*
 // to store scores
 function init() {
   getScores();
 }
-*/
-
-// var index = Math.floor(Math.random() * questions.length);
-// var gameOn = questions[index];
 
 // Once startbtn is clicked this is when the game begins with the gameStart function invoked.
 startBtn.onclick = function (event) {
   // what to show and what to hide to start the game
-  isWin = false;
+  countScore = false;
   console.log("button clicked");
   startBtn.classList.add("hide");
   questionaire[0].classList.add("show");
@@ -101,8 +97,11 @@ startBtn.onclick = function (event) {
 
     // timer function started here and once ends will show where to store name once highscore is made.
     if (timeLeft === 0) {
+      // if (countScore && timeLeft >= 0) {
       clearInterval(countdown);
       gameEnd();
+      gamend[0].classList.add("show");
+      // }
     }
   }, 1000);
 };
@@ -125,6 +124,8 @@ var gameStart = function () {
         if (questions[index].correct === event.target.textContent) {
           console.log("correct");
           box[0].textContent = "correct";
+          scoreCount++;
+          console.log(scoreCount);
         } else {
           console.log("wrong");
           box[0].textContent = "incorrect";
@@ -145,9 +146,6 @@ function gameEnd() {
   questionaire[0].classList.remove("show");
   changequestion.classList.remove("show");
   answer[0].children[0].classList.remove("show");
-  gamend[0].classList.add("show");
-
-  //creating new textcontent here with score list and store smth.
 }
 
 // To store scores
@@ -163,4 +161,5 @@ function getScores() {
   }
   //Render store count to page
   score.textContent = scoreCount;
+  scoreCount = scoreCountshow.textContent;
 }

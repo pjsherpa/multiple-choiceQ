@@ -103,6 +103,13 @@ button{
   
  }
 
+ .gamend{
+  display: flex;
+  justify-content:center;
+  align-items:flex-end;
+    margin-top: 20%;
+  display: none;
+}
 
 .listofanswer{
   display: flex;
@@ -150,14 +157,6 @@ p{
 justify-content: left;
 align-items: center;}
 
-.gamend{
-  display: flex;
-  justify-content:center;
-  align-items: center;
-  margin-left: -17%;
-  margin-top: 20%;
-  visibility: hidden;
-}
 
 .box{
   display: flex;
