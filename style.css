@@ -147,3 +147,12 @@ button{
 p{
 justify-content: left;
 align-items: center;}
+
+.gamend{
+  display:none;
+  justify-content:center;
+  align-items: center;
+  margin-left: -17%;
+  margin-top: 20%;
+}
+
