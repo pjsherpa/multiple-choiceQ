@@ -1,10 +1,3 @@
-var score = 0;
-
-// to store scores
-function init() {
-  getScores();
-}
-
 // Questions and options with correct answers set in global scope.
 let questions = [
   {
@@ -70,13 +63,21 @@ var a1 = document.getElementById("a1");
 var a2 = document.getElementById("a2");
 var a3 = document.getElementById("a3");
 var a4 = document.getElementById("a4");
-var c = document.getElementsByClassName("correct");
-var w = document.getElementsByClassName("wrong");
+var box = document.getElementsByClassName("box");
 var select = document.getElementsByClassName("select");
 var timeLeft = 80;
 var index = 0;
-var select = document.getElementsByClassName("select");
 var gamend = document.getElementsByClassName("gamend");
+var box = document.getElementsByClassName("box");
+
+var score = 0;
+
+/*
+// to store scores
+function init() {
+  getScores();
+}
+*/
 
 // var index = Math.floor(Math.random() * questions.length);
 // var gameOn = questions[index];
@@ -91,14 +92,14 @@ startBtn.onclick = function (event) {
   changequestion.classList.add("show");
   answer[0].children[0].classList.add("show");
   gameStart();
-  // this will start the 80 seconds timer of the game.
+  // this will start the time interval
   var countdown = setInterval(function (event) {
     var timer = document.querySelector(".timer");
     timeLeft--;
 
     timer.textContent = "Final Countdown: " + timeLeft;
 
-    // once ends will show where to store name once highscore is made.
+    // timer function started here and once ends will show where to store name once highscore is made.
     if (timeLeft === 0) {
       clearInterval(countdown);
       gameEnd();
@@ -107,119 +108,37 @@ startBtn.onclick = function (event) {
 };
 
 var gameStart = function () {
-  // this is to make the listofanswer's button to function as a button
-
   var timer = document.querySelector(".timer");
-  //display question and options to html-PJ
+
+  //display question and options to html//
   changequestion.textContent = questions[index].question;
   a1.textContent = questions[index].options[0];
   a2.textContent = questions[index].options[1];
   a3.textContent = questions[index].options[2];
   a4.textContent = questions[index].options[3];
-
+  // this is to make the listofanswer's button react once clicked.
   for (let i = 0; i < select.length; i++)
     console.log(
-      select[i].addEventListener("click", function () {
+      select[i].addEventListener("click", function (event) {
         console.log("button clicked");
+
+        if (questions[index].correct === event.target.textContent) {
+          console.log("correct");
+          box[0].textContent = "correct";
+        } else {
+          console.log("wrong");
+          box[0].textContent = "incorrect";
+          timeLeft--;
+        }
+        var next = questions[index++];
+        changequestion.textContent = questions[index].question;
+        a1.textContent = questions[index].options[0];
+        a2.textContent = questions[index].options[1];
+        a3.textContent = questions[index].options[2];
+        a4.textContent = questions[index].options[3];
       })
     );
 };
-
-a1.addEventListener("click", function (event) {
-  console.log(event.target.textContent);
-  if (questions[0].correct === event.target.textContent) {
-    console.log("correct");
-  } else {
-    console.log("wrong");
-    timeLeft--;
-  }
-  //todo advance to the next question using index
-  var next = questions[index++];
-  changequestion.textContent = questions[index].question;
-  a1.textContent = questions[index].options[0];
-  a2.textContent = questions[index].options[1];
-  a3.textContent = questions[index].options[2];
-  a4.textContent = questions[index].options[3];
-  c[0].classList.remove("show");
-  console.log(questions[index++]);
-
-  //display the next question-PJ hint for loop is not required
-});
-a2.addEventListener("click", function (event) {
-  console.log(event.target.textContent);
-  if (questions[0].correct === event.target.textContent) {
-    console.log("correct");
-    c[0].classList.add("show");
-  } else {
-    console.log("wrong");
-    timeLeft--;
-    console.log(timeLeft);
-  }
-  var next = questions[index++];
-  changequestion.textContent = questions[index].question;
-  a1.textContent = questions[index].options[0];
-  a2.textContent = questions[index].options[1];
-  a3.textContent = questions[index].options[2];
-  a4.textContent = questions[index].options[3];
-  c[0].classList.remove("show");
-  console.log(questions[index++]);
-});
-a3.addEventListener("click", function (event) {
-  console.log(event.target.textContent);
-  if (questions[0].correct === event.target.textContent) {
-    console.log("correct");
-    c[0].classList.add("show");
-  } else {
-    console.log("wrong");
-    timeLeft--;
-    console.log(timeLeft);
-  }
-  var next = questions[index++];
-  changequestion.textContent = questions[index].question;
-  a1.textContent = questions[index].options[0];
-  a2.textContent = questions[index].options[1];
-  a3.textContent = questions[index].options[2];
-  a4.textContent = questions[index].options[3];
-  c[0].classList.remove("show");
-  console.log(questions[index++]);
-});
-a4.addEventListener("click", function (event) {
-  console.log(event.target.textContent);
-  if (questions[0].correct === event.target.textContent) {
-    console.log("correct");
-  } else {
-    console.log("wrong");
-    timeLeft--;
-    console.log(timeLeft);
-  }
-  var next = questions[index++];
-  changequestion.textContent = questions[index].question;
-  a1.textContent = questions[index].options[0];
-  a2.textContent = questions[index].options[1];
-  a3.textContent = questions[index].options[2];
-  a4.textContent = questions[index].options[3];
-
-  console.log(questions[index++]);
-});
-a4.addEventListener("click", function (event) {
-  console.log(event.target.textContent);
-  if (questions[0].correct === event.target.textContent) {
-    console.log("correct");
-    c[0].textContent;
-  } else {
-    console.log("wrong");
-    timeLeft--;
-    console.log(timeLeft);
-  }
-  var next = questions[index++];
-  changequestion.textContent = questions[index].question;
-  a1.textContent = questions[index].options[0];
-  a2.textContent = questions[index].options[1];
-  a3.textContent = questions[index].options[2];
-  a4.textContent = questions[index].options[3];
-
-  console.log(questions[index++]);
-});
 
 // This is the end
 function gameEnd() {
