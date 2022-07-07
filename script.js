@@ -96,6 +96,7 @@ startBtn.onclick = function (event) {
       // if (questions[index] === 7 && timeLeft >= 0) {
       clearInterval(countdown);
       gameEnd();
+      setWins();
       getScores();
 
       gamend[0].classList.add("show");
@@ -187,7 +188,7 @@ register.addEventListener("click", function (event) {
   //   displayMessage("success", "Registered successfully");
 
   localStorage.setItem("fname", JSON.stringify(fname));
-  setWins();
+
   console.log(fnameSpan, fname);
   renderLastRegistered();
   // }
