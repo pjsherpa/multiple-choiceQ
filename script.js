@@ -97,7 +97,7 @@ startBtn.onclick = function (event) {
       clearInterval(countdown);
       gameEnd();
       getScores();
-      
+
       gamend[0].classList.add("show");
       // }
     }
@@ -148,8 +148,8 @@ function gameEnd() {
 
 // Updates scorecountshow on screen and sets scorecount count to client storage
 function setWins() {
-  scoreCount-output.textContent = scoreCountshow;
-  localStorage.setItem("scoreCount", scoreCountshow);
+  // scoreCountoutput.textContent(scoreCountshow);
+  localStorage.setItem("scoreCount", scoreCount);
 }
 
 // To store scores
@@ -187,12 +187,11 @@ register.addEventListener("click", function (event) {
   //   displayMessage("success", "Registered successfully");
 
   localStorage.setItem("fname", JSON.stringify(fname));
-
+  setWins();
   console.log(fnameSpan, fname);
   renderLastRegistered();
   // }
 });
 
-setWins()
 // Bits left
 // Final Show score and store score and name
