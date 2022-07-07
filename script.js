@@ -93,7 +93,7 @@ startBtn.onclick = function (event) {
 
     // timer function started here and once ends will show where to store name once highscore is made.
     if (timeLeft === 0) {
-      // if (questions[index] === 7 && timeLeft >= 0) {
+      // if (questions[index] && timeLeft >= 0) {
       clearInterval(countdown);
       gameEnd();
       setWins();
@@ -130,12 +130,20 @@ var gameStart = function () {
           box[0].textContent = "incorrect";
           timeLeft--;
         }
-        var next = questions[index++];
-        changequestion.textContent = questions[index].question;
-        a1.textContent = questions[index].options[0];
-        a2.textContent = questions[index].options[1];
-        a3.textContent = questions[index].options[2];
-        a4.textContent = questions[index].options[3];
+        // var next = questions[index++];
+        if (index++ >= questions.length) {
+          clearInterval(countdown);
+          gameEnd();
+          setWins();
+          getScores();
+          gamend[0].classList.add("show");
+        } else {
+          changequestion.textContent = questions[index].question;
+          a1.textContent = questions[index].options[0];
+          a2.textContent = questions[index].options[1];
+          a3.textContent = questions[index].options[2];
+          a4.textContent = questions[index].options[3];
+        }
       })
     );
 };
@@ -182,17 +190,8 @@ register.addEventListener("click", function (event) {
 
   var fname = document.querySelector("#fname").value;
 
-  // if (fname === "") {
-  //   displayMessage("error", "name cannot be blank");
-  // } else {
-  //   displayMessage("success", "Registered successfully");
-
   localStorage.setItem("fname", JSON.stringify(fname));
 
   console.log(fnameSpan, fname);
   renderLastRegistered();
-  // }
 });
-
-// Bits left
-// Final Show score and store score and name
