@@ -53,7 +53,7 @@ let questions = [
 ];
 
 //variables created for classes and id's to be used in functions.
-var scoreCount = document.querySelector(".score");
+var scoreCountoutput = document.querySelector(".score");
 var startBtn = document.querySelector(".start");
 var questionaire = document.querySelectorAll(".questionaire");
 var changequestion = document.querySelector(".changequestion");
@@ -71,8 +71,7 @@ var gamend = document.getElementsByClassName("gamend");
 var box = document.getElementsByClassName("box");
 var scoreCountshow = document.getElementsByClassName("scoreCountshow");
 var scoreCount = 0;
-var score = 0;
-var fnameSpan = document.querySelector("#fname");
+var fnameSpan = document.querySelector("#fnameSpan");
 var register = document.getElementById("register");
 
 // Once startbtn is clicked this is when the game begins with the gameStart function invoked.
@@ -148,7 +147,7 @@ function gameEnd() {
 
 // Updates scorecountshow on screen and sets scorecount count to client storage
 function setWins() {
-  scoreCount.textContent = scoreCountshow;
+  scoreCountoutput.textContent = scoreCountshow;
   localStorage.setItem("scoreCount", scoreCountshow);
 }
 
