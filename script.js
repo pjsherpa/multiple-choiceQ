@@ -97,6 +97,7 @@ startBtn.onclick = function (event) {
       clearInterval(countdown);
       gameEnd();
       getScores();
+      
       gamend[0].classList.add("show");
       // }
     }
@@ -147,7 +148,7 @@ function gameEnd() {
 
 // Updates scorecountshow on screen and sets scorecount count to client storage
 function setWins() {
-  scoreCountoutput.textContent = scoreCountshow;
+  scoreCount-output.textContent = scoreCountshow;
   localStorage.setItem("scoreCount", scoreCountshow);
 }
 
@@ -192,5 +193,6 @@ register.addEventListener("click", function (event) {
   // }
 });
 
+setWins()
 // Bits left
 // Final Show score and store score and name
