@@ -65,23 +65,20 @@ var a3 = document.getElementById("a3");
 var a4 = document.getElementById("a4");
 var box = document.getElementsByClassName("box");
 var select = document.getElementsByClassName("select");
-var timeLeft = 5;
+var timeLeft = 10;
 var index = 0;
 var gamend = document.getElementsByClassName("gamend");
 var box = document.getElementsByClassName("box");
 var scoreCountshow = document.getElementsByClassName("scoreCountshow");
 var scoreCount = 0;
 var score = 0;
-
-// to store scores
-function init() {
-  getScores();
-}
+var fnameSpan = document.querySelector("#fname");
+var register = document.getElementById("register");
 
 // Once startbtn is clicked this is when the game begins with the gameStart function invoked.
 startBtn.onclick = function (event) {
   // what to show and what to hide to start the game
-  countScore = false;
+
   console.log("button clicked");
   startBtn.classList.add("hide");
   questionaire[0].classList.add("show");
@@ -97,9 +94,10 @@ startBtn.onclick = function (event) {
 
     // timer function started here and once ends will show where to store name once highscore is made.
     if (timeLeft === 0) {
-      // if (countScore && timeLeft >= 0) {
+      // if (questions[index] === 7 && timeLeft >= 0) {
       clearInterval(countdown);
       gameEnd();
+      getScores();
       gamend[0].classList.add("show");
       // }
     }
@@ -148,6 +146,12 @@ function gameEnd() {
   answer[0].children[0].classList.remove("show");
 }
 
+// Updates win count on screen and sets win count to client storage
+function setWins() {
+  scoreCount.textContent = scoreCountshow;
+  localStorage.setItem("scoreCount", scoreCountshow);
+}
+
 // To store scores
 function getScores() {
   // Get stored value from client storage, if it exists
@@ -156,10 +160,37 @@ function getScores() {
   if (storedScores === null) {
     scoreCount = 0;
   } else {
-    // If a value is retrieved from client storage set the winCounter to that value
     scoreCount = storedScores;
   }
-  //Render store count to page
-  score.textContent = scoreCount;
+  //Render score count to page
   scoreCount = scoreCountshow.textContent;
 }
+//write your name
+function renderLastRegistered() {
+  var fname = localStorage.getItem("fname");
+
+  if (!fname) {
+    return;
+  }
+
+  fnameSpan.textContent = fname;
+}
+
+register.addEventListener("click", function (event) {
+  event.preventDefault();
+
+  var fname = document.querySelector("#fname").value;
+
+  // if (fname === "") {
+  //   displayMessage("error", "name cannot be blank");
+  // } else {
+  //   displayMessage("success", "Registered successfully");
+
+  localStorage.setItem("fname", fnameSpan);
+  console.log(fnameSpan, fname);
+  renderLastRegistered();
+  // }
+});
+
+// Bits left
+// Final Show score and store score and name
