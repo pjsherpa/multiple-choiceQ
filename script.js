@@ -149,7 +149,7 @@ function gameEnd() {
 
 // Updates scorecountshow on screen and sets scorecount count to client storage
 function setWins() {
-  // scoreCountoutput.textContent(scoreCountshow);
+  scoreCountshow[0].textContent = scoreCount;
   localStorage.setItem("scoreCount", scoreCount);
 }
 
