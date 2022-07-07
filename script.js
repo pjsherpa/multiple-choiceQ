@@ -146,7 +146,7 @@ function gameEnd() {
   answer[0].children[0].classList.remove("show");
 }
 
-// Updates win count on screen and sets win count to client storage
+// Updates scorecountshow on screen and sets scorecount count to client storage
 function setWins() {
   scoreCount.textContent = scoreCountshow;
   localStorage.setItem("scoreCount", scoreCountshow);
@@ -186,7 +186,8 @@ register.addEventListener("click", function (event) {
   // } else {
   //   displayMessage("success", "Registered successfully");
 
-  localStorage.setItem("fname", fnameSpan);
+  localStorage.setItem("fname", JSON.stringify(fname));
+
   console.log(fnameSpan, fname);
   renderLastRegistered();
   // }
