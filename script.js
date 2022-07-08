@@ -48,7 +48,7 @@ let questions = [
   {
     question: "font-weight, font-style,font-family are all?",
     options: ["font family", "textDecoration", "typography", "list-style"],
-    correct: "typpography",
+    correct: "typography",
   },
 ];
 
@@ -65,7 +65,7 @@ var a3 = document.getElementById("a3");
 var a4 = document.getElementById("a4");
 var box = document.getElementsByClassName("box");
 var select = document.getElementsByClassName("select");
-var timeLeft = 40;
+var timeLeft = 20;
 var index = 0;
 var gamend = document.getElementsByClassName("gamend");
 var box = document.getElementsByClassName("box");
@@ -93,14 +93,12 @@ startBtn.onclick = function (event) {
 
     // timer function started here and once ends will show where to store name once highscore is made.
     if (timeLeft === 0) {
-      // if (questions[index] && timeLeft >= 0) {
       clearInterval(countdown);
       gameEnd();
       setWins();
       getScores();
 
       gamend[0].classList.add("show");
-      // }
     }
   }, 1000);
 };
@@ -108,7 +106,7 @@ startBtn.onclick = function (event) {
 var gameStart = function () {
   var timer = document.querySelector(".timer");
 
-  //display question and options to html//
+  //display question and options.
   changequestion.textContent = questions[index].question;
   a1.textContent = questions[index].options[0];
   a2.textContent = questions[index].options[1];
@@ -116,39 +114,38 @@ var gameStart = function () {
   a4.textContent = questions[index].options[3];
   // this is to make the listofanswer's button react once clicked.
   for (let i = 0; i < select.length; i++)
-    console.log(
-      select[i].addEventListener("click", function (event) {
-        console.log("button clicked");
+    select[i].addEventListener("click", function (event) {
+      console.log("button clicked");
 
-        if (questions[index].correct === event.target.textContent) {
-          console.log("correct");
-          box[0].textContent = "correct";
-          scoreCount++;
-          console.log(scoreCount);
-        } else {
-          console.log("wrong");
-          box[0].textContent = "incorrect";
-          timeLeft--;
-        }
-        // var next = questions[index++];
-        if (index++ >= questions.length) {
-          clearInterval(countdown);
-          gameEnd();
-          setWins();
-          getScores();
-          gamend[0].classList.add("show");
-        } else {
-          changequestion.textContent = questions[index].question;
-          a1.textContent = questions[index].options[0];
-          a2.textContent = questions[index].options[1];
-          a3.textContent = questions[index].options[2];
-          a4.textContent = questions[index].options[3];
-        }
-      })
-    );
+      if (questions[index].correct === event.target.textContent) {
+        console.log("correct");
+        box[0].textContent = "correct";
+        scoreCount++;
+        console.log(scoreCount);
+      } else {
+        console.log("wrong");
+        box[0].textContent = "incorrect";
+        timeLeft--;
+      }
+      // if the game ends before the the time interval the game will end and show your score so you can register your name.
+      if (index++ >= questions.length) {
+        clearInterval(countdown);
+        gameEnd();
+        setWins();
+        getScores();
+        gamend[0].classList.add("show");
+        // the following will display the next set of questions
+      } else {
+        var next = (changequestion.textContent = questions[index].question);
+        a1.textContent = questions[index].options[0];
+        a2.textContent = questions[index].options[1];
+        a3.textContent = questions[index].options[2];
+        a4.textContent = questions[index].options[3];
+      }
+    });
 };
 
-// This is the end
+// This will hide everything and display where to register name showing highScore.
 function gameEnd() {
   questionaire[0].classList.remove("show");
   changequestion.classList.remove("show");
@@ -159,6 +156,7 @@ function gameEnd() {
 function setWins() {
   scoreCountshow[0].textContent = scoreCount;
   localStorage.setItem("scoreCount", scoreCount);
+  return;
 }
 
 // To store scores
@@ -174,7 +172,7 @@ function getScores() {
   //Render score count to page
   scoreCount = scoreCountshow.textContent;
 }
-//write your name
+//once name typed in, it stores the name on local storage.
 function renderLastRegistered() {
   var fname = localStorage.getItem("fname");
 
@@ -193,5 +191,9 @@ register.addEventListener("click", function (event) {
   localStorage.setItem("fname", JSON.stringify(fname));
 
   console.log(fnameSpan, fname);
+
   renderLastRegistered();
 });
+// calling the functions which have store name and stored score so it displays on Highscore.
+renderLastRegistered();
+setWins();
