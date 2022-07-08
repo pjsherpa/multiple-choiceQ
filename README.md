@@ -13,16 +13,16 @@ Reset.CSS
 CSS
 Javascript
 Deployment
-Screenshot of multiple-choiceQ for reference(img1-img5)
+Screenshot of multiple-choiceQ for reference(img1-img7)
 
 
 Features:
-1. The page displays Recent Score, header, Time(has not started) start button and the game rules.
-2. Click Start, start button and game rules are not displayed anymore, game quiz appears the timer starts.
-3. Game quiz has a question and four choices once selected moves on to another question.(8 multiple choices in total)
-4. Click on choices provided and if correct will display correct at the bottom and if incorrect will display incorrect at the bottom and deduct 1 second. 
-5. If all 8 questions is finished before the time is up or if time is up and the game is over. It displays score, where we can store our name and the timer stops.
-6. Once clicked on Registered name will be displayed with score on the main page and also after page refresh.
+1. The page displays Recent Score, header, Time(has not started) start button and the game rules.(ref:img1)
+2. Click Start, start button and game rules are not displayed anymore, game quiz appears the timer starts.(ref:img2)
+3. Game quiz has a question and four choices once selected(ref:img3) moves on to another question.(8 multiple choices in total)
+4. Click on choices provided and if correct will display correct (ref:img4)at the bottom and if incorrect will display incorrect(ref:img5) at the bottom and deduct 1 second. 
+5. If all 8 questions is finished before the time is up or if time is up and the game is over. It displays score, where we can store our name and the timer stops.(ref:img6)
+6. Once clicked on Registered name will be displayed with score on the main page and also after page refresh.(ref:img7)
 
 HTML:
 1. The following is present in Html Semantic Elements.
