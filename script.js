@@ -65,7 +65,7 @@ var a3 = document.getElementById("a3");
 var a4 = document.getElementById("a4");
 var box = document.getElementsByClassName("box");
 var select = document.getElementsByClassName("select");
-var timeLeft = 20;
+var timeLeft = 25;
 var index = 0;
 var gamend = document.getElementsByClassName("gamend");
 var box = document.getElementsByClassName("box");
@@ -73,7 +73,8 @@ var scoreCountshow = document.getElementsByClassName("scoreCountshow");
 var scoreCount = 0;
 var fnameSpan = document.querySelector("#fnameSpan");
 var register = document.getElementById("register");
-
+var countdown;
+getScores();
 // Once startbtn is clicked this is when the game begins with the gameStart function invoked.
 startBtn.onclick = function (event) {
   // what to show and what to hide to start the game
@@ -84,8 +85,9 @@ startBtn.onclick = function (event) {
   changequestion.classList.add("show");
   answer[0].children[0].classList.add("show");
   gameStart();
+  scoreCount = 0;
   // this will start the time interval
-  var countdown = setInterval(function (event) {
+  countdown = setInterval(function (event) {
     var timer = document.querySelector(".timer");
     timeLeft--;
 
@@ -103,7 +105,7 @@ startBtn.onclick = function (event) {
   }, 1000);
 };
 
-var gameStart = function () {
+var gameStart = function (countdown) {
   var timer = document.querySelector(".timer");
 
   //display question and options.
@@ -127,9 +129,12 @@ var gameStart = function () {
         box[0].textContent = "incorrect";
         timeLeft--;
       }
+      index++;
       // if the game ends before the the time interval the game will end and show your score so you can register your name.
-      if (index++ >= questions.length) {
-        clearInterval(countdown);
+      if (index === questions.length) {
+        //check this
+        timeLeft = 0;
+
         gameEnd();
         setWins();
         getScores();
@@ -150,6 +155,7 @@ function gameEnd() {
   questionaire[0].classList.remove("show");
   changequestion.classList.remove("show");
   answer[0].children[0].classList.remove("show");
+  clearInterval(countdown);
 }
 
 // Updates scorecountshow on screen and sets scorecount count to client storage
@@ -164,13 +170,13 @@ function getScores() {
   // Get stored value from client storage, if it exists
   var storedScores = localStorage.getItem("scoreCount");
   // If stored value doesn't exist, set counter to 0
-  if (storedScores === null) {
+  if (!storedScores) {
     scoreCount = 0;
   } else {
     scoreCount = storedScores;
   }
   //Render score count to page
-  scoreCount = scoreCountshow.textContent;
+  scoreCountshow.textContent = scoreCount;
 }
 //once name typed in, it stores the name on local storage.
 function renderLastRegistered() {
