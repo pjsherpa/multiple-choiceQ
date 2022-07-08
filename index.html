@@ -4,23 +4,28 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
   <title>Who want's to be a coder?</title>
+  <!-- linked css -->
+  <link rel="stylesheet" href ="reset.css">
   <link rel="stylesheet" href ="style.css">
 </head>
 <body>
   <header>
+     <!-- title name which displays on page -->
 <h1>Who want's to be a coder?</h1>
 </header>
-
+<!-- displays countdown -->
 <div class="timer">Time</div>   
 
-  <section class = 'right'>
+  <section class = 'left'>
     <h2>HighScore</h2>
     <span id="fnameSpan"></span>
          <div class>score:</div> 
          <div class='scoreCountshow'></div>
         
     </section>
+    <!-- start button -->
   <section class="start" ><button>Start</button>
   
     <h3>Game rules:<h3>
@@ -35,6 +40,7 @@
                      Good Luck!!</p>
       </section>
 
+    <!-- The section has empty elements with class names. This is where the questions and choices appear through JS. -->
 <section class= questionaire>
   <h4 class="changequestion"></h4>
   <nav class="answer">
@@ -49,7 +55,7 @@
 
 </section>
 
-
+<!-- Once game ends this appears to register name with score side by side.  -->
    <form class="gamend">
             <br>
     <label>Please submit Name:</label>

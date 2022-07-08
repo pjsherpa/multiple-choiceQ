@@ -4,8 +4,7 @@
   --nature:green;
   --dark:black;
   --sky:lightskyblue;
-  --width:518px auto;
-  }
+   }
   
    /* created line height */
   *{
@@ -28,7 +27,7 @@ header{
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   }
 
-.right{
+.left{
   display: flex;
   position: fixed;
 }
@@ -59,7 +58,7 @@ h3{
   margin-left: 48%;
 }
 
-
+/* how the start button will display */
 button{
   display: block;
   justify-content:center;
@@ -105,6 +104,7 @@ button{
   display: none;
 }
 
+/*  the list of answer will pass through from js and this is how it will appear on page */
 .listofanswer{
   display: flex;
   justify-content: center;
@@ -115,7 +115,7 @@ button{
   margin: 19px 600px 14px;
 }
 
-
+/* Hover effect to enlarge choices and color change from green to lightblue for choices. */
  .listofanswer:hover{
   transform: scale(1);
   box-shadow:inset 0px 0px 15px var(--snow), 0 0 45px var(--dark);
@@ -123,6 +123,7 @@ button{
   font-size: large;
   font-weight: bolder;
  }
+ /* active will enlarge more once choice is seleceted. */
  .listofanswer:active{
   transform: scale(1.5);
   box-shadow:inset 0px 0px 15px var(--snow), 0 0 45px var(--dark);
@@ -131,18 +132,16 @@ button{
   font-weight: bolder;
  }
  
- h2:hover + .score{
-  display: block;
- }
 
  button:hover{
   transform:scale(1.6)
  }
 
+ /* this will be addon when certain functions and clicks will be selected */
  .hide,.correct,.wrong{
   display:none;
  }
-
+ /* this will be addon when certain functions and clicks will be selected */
  .show{
   display:block;
  }
